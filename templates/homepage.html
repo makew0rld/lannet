@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lannet homepage</title>
+    <style type="text/css">
+    body {
+        margin: 40px auto;
+        max-width: 720px;
+        line-height: 1.6;
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        padding: 0 20px;
+        word-wrap: break-word;
+        font-family: Sans-Serif;
+        text-align: center;
+    }
+
+    h1, h2, h3 {
+        line-height: 1.2
+    }
+    </style>
+</head>
+<body>
+    <h1>Homepage</h1>
+    <h3>Peer listing</h3>
+    {{range $addr, $peer := .}}
+    <p><a href="http://{{$addr}}/">{{$peer.Name}}</a></p>
+    {{end}}
+</body>
+</html>

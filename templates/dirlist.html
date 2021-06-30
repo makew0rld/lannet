@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!-- Modified from lighttpd directory listing -->
+<head>
+    <title>Index of {{.Name}}</title>
+    <style type="text/css">
+    a,
+    a:active {
+        text-decoration: none;
+        color: blue;
+    }
+    a:visited {
+        color: #48468f;
+    }
+    a:hover,
+    a:focus {
+        text-decoration: underline;
+        color: red;
+    }
+    body {
+        background-color: #f5f5f5;
+        font-family: Sans-Serif;
+    }
+    h2 {
+        margin-bottom: 12px;
+    }
+    table {
+        margin-left: 12px;
+    }
+    th,
+    td {
+        font: 100% monospace;
+        text-align: left;
+    }
+    th {
+        font-weight: bold;
+        padding-right: 14px;
+        padding-bottom: 3px;
+    }
+    td {
+        padding-right: 14px;
+    }
+    td.s,
+    th.s {
+        text-align: right;
+    }
+    div.list {
+        background-color: white;
+        border-top: 1px solid #646464;
+        border-bottom: 1px solid #646464;
+        padding-top: 10px;
+        padding-bottom: 14px;
+    }
+    div.foot {
+        font: 90% monospace;
+        color: #787878;
+        padding-top: 4px;
+    }
+    </style>
+</head>
+<body>
+    <h2>Index of {{.Name}}</h2>
+    <div class="list">
+        <table summary="Directory Listing" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="n">Name</th>
+                    <th class="m">Modified</th>
+                    <th class="s">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="n"><a href="../">Parent Directory</a>/</td>
+                    <td class="m">&nbsp;</td>
+                    <td class="s">&nbsp;</td>
+                </tr>
+                {{range .ChildrenDirs}}
+                <tr>
+                    <td class="n"><a href="{{.Name}}/">{{.Name}}/</a></td>
+                    <td class="m">{{.ModTime.Format "Jan 02, 2006 15:04:05 MST"}}</td>
+                    <td class="s">&nbsp;</td>
+                </tr>
+                {{end}}
+                {{range .ChildrenFiles}}
+                <tr>
+                    <td class="n"><a href="{{.Name}}">{{.Name}}</a></td>
+                    <td class="m">{{.ModTime.Format "Jan 02, 2006 15:04:05 MST"}}</td>
+                    <td class="s">{{.Size}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    <div class="foot">lannet</div>
+</body>
+</html>
