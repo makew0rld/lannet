@@ -83,6 +83,10 @@ func customDirListing(next http.HandlerFunc) http.Handler {
 					ChildrenFiles: make([]fileInfo, 0),
 				}
 				for _, entry := range entries {
+					if strings.HasPrefix(entry.Name(), ".") {
+						continue
+					}
+
 					var modTime time.Time
 					var size string
 					fi, err := entry.Info()
